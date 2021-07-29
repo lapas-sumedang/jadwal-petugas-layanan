@@ -1,0 +1,34 @@
+.bg-tosca {
+  background-color: #63ccc5 !important;
+}
+
+.text-theme {
+  color: #63ccc5 !important;
+}
+
+.bg-dark-theme {
+  background-color: #121212 !important;
+}
+
+.nav-link-theme {
+  color: #4ea09a;
+  transition: 600ms;
+  text-decoration: none;
+  margin: 8px;
+}
+
+.border-theme {
+  border: 1px solid #121212 !important;
+}
+
+.border-theme-active {
+  border: 1px solid #63ccc5 !important;
+}
+
+.nav-link-theme:hover {
+  color: #63ccc5;
+}
+
+.nav-link-theme.active {
+  color: #63ccc5;
+}

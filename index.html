@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Logo Icon-->
+    <link rel="icon" href="" />
+    <link rel="shortcut icon" href="" />
+    <link rel="apple-touch-icon" href="" />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <!-- SweeAlert2 -->
+    <link rel="stylesheet" href="assets/js/sweetalert2/dist/sweetalert2.min.css" />
+    <!-- Icon -->
+    <link rel="stylesheet" href="assets/icon/css/all.min.css" />
+
+    <title>Jadwal Petugas Layanan Kunjungan</title>
+  </head>
+  <body>
+    <!-- Up Button -->
+    <a href="javascript:void(0)" class="btn btn-dark btn-up rounded-circle text-center shadow" id="btnup" onclick="onTop()"><i class="fas fa-arrow-up"></i></a>
+    <!-- end upbutton -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg shadow-sm navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">P.LAYANAN</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item me-4 my-3 my-lg-0">
+              <a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item me-4 mb-3 mb-lg-0">
+              <a class="nav-link" href="jadwal_lengkap.html"><i class="fas fa-clock"></i> Jadwal Lengkap</a>
+            </li>
+            <!-- <li class="nav-item mb-3 mb-lg-0">
+              <a class="nav-link" href="admin.html"><i class="fas fa-user"></i> Admin</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <section>
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-12 text-center">
+            <h2 class="fw-bold text-uppercase fw-bold">Jadwal Petugas Layanan Kunjungan</h2>
+            <div class="d-flex justify-content-center">
+              <h4><span class="badge bg-dark me-2" id="hari"></span></h4>
+              <h4><span class="badge bg-dark" id="jam">...</span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container d-none" id="pesanKosong">
+        <div class="row mb-4 justify-content-center">
+          <div class="col-lg-4 col-md-6">
+            <div class="card bg-transparent border-0 mb-5">
+              <div class="card-body text-center">
+                <img src="assets/img/nodata.svg" alt="nodata" width="60%" class="mb-4" />
+                <h3>Tidak ada jadwal.</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid" id="tugasPelayanan">
+        <div class="row mb-4">
+          <div class="col-md-6 col-lg-3">
+            <h6 class="text-uppercase fw-bolder text-center mb-4">P. Layanan Penitipan Makanan</h6>
+            <div class="card border-1 shadow mb-5">
+              <div class="card-body text-center">
+                <img src="assets/img/user.svg" width="50%" class="mb-4" />
+                <h4 class="" id="plpm">-</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <h6 class="text-uppercase fw-bolder text-center mb-4">Duta Layanan</h6>
+            <div class="card border-1 shadow mb-5">
+              <div class="card-body text-center">
+                <img src="assets/img/user.svg" width="50%" class="mb-4" />
+                <h4 class="" id="dl">-</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <h6 class="text-uppercase fw-bolder text-center mb-4">Petugas Penitipan Uang</h6>
+            <div class="card border-1 shadow mb-5">
+              <div class="card-body text-center">
+                <img src="assets/img/user.svg" width="50%" class="mb-4" />
+                <h4 class="" id="ppu">-</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <h6 class="text-uppercase fw-bolder text-center mb-4">Petugas Penitipan Makanan</h6>
+            <div class="card border-1 shadow mb-5">
+              <div class="card-body text-center">
+                <img src="assets/img/user.svg" width="50%" class="mb-4" />
+                <h4 class="" id="ppm">-</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="assets/icon/js/all.min.js"></script>
+    <script src="assets/js/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/onscroll.js"></script>
+  </body>
+</html>
