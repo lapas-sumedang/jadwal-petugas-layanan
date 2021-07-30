@@ -9,11 +9,11 @@ function getDataNow() {
     url: base_url,
     dataType: "json",
     success: function (hasil) {
-      if (hasil.length > 0) {
-        $("#plpm").text(hasil[0].plk_plpm);
-        $("#dl").text(hasil[0].plk_dl);
-        $("#ppu").text(hasil[0].plk_pu);
-        $("#ppm").text(hasil[0].plk_pm);
+      if (hasil.plpm != "-") {
+        $("#plpm").text(hasil.plpm);
+        $("#dl").text(hasil.dl);
+        $("#ppu").text(hasil.pu);
+        $("#ppm").text(hasil.pm);
         hideJadwal(false);
         hidePesan(true);
       } else {

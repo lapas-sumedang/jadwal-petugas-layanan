@@ -25,16 +25,13 @@ function getData() {
     scrollX: true,
 
     ajax: {
-      url: "https://www.radhiansobarna.com/api/elsa/getdata",
+      url: "https://www.radhiansobarna.com/api/elsa/pegawai",
       type: "POST",
-      data: function (data) {
-        data.filterDate = $("#month").val();
-      },
     },
 
     columnDefs: [
       {
-        targets: [6],
+        targets: [3],
         orderable: false,
       },
     ],
@@ -42,7 +39,7 @@ function getData() {
 }
 
 function detailData(id) {
-  var base_url = "https://www.radhiansobarna.com/api/elsa/tugaspelayanan/getData";
+  var base_url = "https://www.radhiansobarna.com/api/elsa/pegawai/getData";
   disable();
   $.ajax({
     type: "POST",
@@ -50,52 +47,31 @@ function detailData(id) {
     url: base_url,
     dataType: "json",
     success: function (hasil) {
-      $("#idplk").val(hasil[0].plk_id);
-      $("#tglU").val(hasil[0].plk_tgl);
-      $("#plpmU").val(petugas1(hasil[0].plk_plpm));
-      $("#plpm2U").val(petugas2(hasil[0].plk_plpm));
-      $("#dlU").val(hasil[0].plk_dl);
-      $("#puU").val(hasil[0].plk_pu);
-      $("#pmU").val(hasil[0].plk_pm);
+      $("#idpegawai").val(hasil[0].pegawai_id);
+      $("#nipU").val(hasil[0].pegawai_nip);
+      $("#nmpegawaiU").val(hasil[0].pegawai_nama);
       enable();
       document.body.style.paddingRight = "0px";
     },
   });
 }
 
-function petugas1(data) {
-  var explode = data.split(",");
-  return explode[0];
-}
-
-function petugas2(data) {
-  var explode = data.split(",");
-  return explode[1];
-}
-
 function proses_tambah() {
-  let tgl = $("#tgl").val();
-  let plpm1 = $("#plpm").val();
-  let plpm2 = $("#plpm2").val();
-  let dl = $("#dl").val();
-  let pu = $("#pu").val();
-  let pm = $("#pm").val();
-  let plpm = plpm1 + "," + plpm2;
-
+  let nip = $("#nip").val();
+  let nmpegawai = $("#nmpegawai").val();
   loadingklik();
   disable();
-  if (tgl == "") {
-    pesan("Oops..", "Tanggal harus di isi!", "warning");
+  if (nip == "") {
+    pesan("Oops..", "NIP harus di isi!", "warning");
+  } else if (nmpegawai == "") {
+    pesan("Oops..", "Nama Pegawai harus di isi!", "warning");
   } else {
     var postForm = {
-      tgl: tgl,
-      plpm: plpm,
-      dl: dl,
-      pu: pu,
-      pm: pm,
+      nip: nip,
+      nmpegawai: nmpegawai,
     };
     $.ajax({
-      url: "https://www.radhiansobarna.com/api/elsa/tugaspelayanan/proses_tambah",
+      url: "https://www.radhiansobarna.com/api/elsa/pegawai/proses_tambah",
       type: "POST",
       data: postForm,
       dataType: "json",
@@ -119,29 +95,25 @@ function proses_tambah() {
 }
 
 function proses_ubah() {
-  let idplk = $("#idplk").val();
-  let tgl = $("#tglU").val();
-  let plpm1 = $("#plpmU").val();
-  let plpm2 = $("#plpm2U").val();
-  let dl = $("#dlU").val();
-  let pu = $("#puU").val();
-  let pm = $("#pmU").val();
-  let plpm = plpm1 + "," + plpm2;
+  let idpegawai = $("#idpegawai").val();
+  let nip = $("#nipU").val();
+  let nmpegawai = $("#nmpegawaiU").val();
   loadingklik();
   disable();
-  if (tgl == "") {
-    pesan("Oops..", "Tanggal harus di isi!", "warning");
+  if (nip == "") {
+    pesan("Oops..", "NIP harus di isi!", "warning");
+    enable();
+  } else if (nmpegawai == "") {
+    pesan("Oops..", "Nama Pegawai harus di isi!", "warning");
+    enable();
   } else {
     var postForm = {
-      idplk: idplk,
-      tgl: tgl,
-      plpm: plpm,
-      dl: dl,
-      pu: pu,
-      pm: pm,
+      idpegawai: idpegawai,
+      nip: nip,
+      nmpegawai: nmpegawai,
     };
     $.ajax({
-      url: "https://www.radhiansobarna.com/api/elsa/tugaspelayanan/proses_ubah",
+      url: "https://www.radhiansobarna.com/api/elsa/pegawai/proses_ubah",
       type: "POST",
       data: postForm,
       dataType: "json",
@@ -169,7 +141,7 @@ function proses_hapus(id) {
     id: id,
   };
   $.ajax({
-    url: "https://www.radhiansobarna.com/api/elsa/tugaspelayanan/proses_hapus",
+    url: "https://www.radhiansobarna.com/api/elsa/pegawai/proses_hapus",
     type: "POST",
     data: postForm,
     dataType: "json",
@@ -217,31 +189,17 @@ function pesan(judulpesan, pesan, icon) {
 }
 
 function hapusForm() {
-  let tgl = $("#tgl");
-  let plpm = $("#plpm");
-  let plpm2 = $("#plpm2");
-  let dl = $("#dl");
-  let pu = $("#pu");
-  let pm = $("#pm");
-  let idplk = $("#idplk");
-  let plpmU = $("#plpmU");
-  let plpm2U = $("#plpm2U");
-  let dlU = $("#dlU");
-  let puU = $("#puU");
-  let pmU = $("#pmU");
+  let nip = $("#nip");
+  let nmpegawai = $("#nmpegawai");
+  let idpegawai = $("#idpegawai");
+  let nipU = $("#nipU");
+  let nmpegawaiU = $("#nmpegawaiU");
 
-  tgl.val("");
-  idplk.val("");
-  plpm.val("");
-  dl.val("");
-  pu.val("");
-  pm.val("");
-  plpmU.val("");
-  dlU.val("");
-  puU.val("");
-  pmU.val("");
-  plpm2.val("");
-  plpm2U.val("");
+  nip.val("");
+  nmpegawai.val("");
+  idpegawai.val("");
+  nipU.val("");
+  nmpegawaiU.val("");
 }
 
 function loadingklik() {

@@ -39,3 +39,15 @@ body::-webkit-scrollbar-thumb {
   right: 32px;
   bottom: 32px;
 }
+
+.select2-container {
+  z-index: 9999 !important;
+}
+
+.select2-selection__choice {
+  width: auto !important;
+}
+
+.select2 {
+  width: 100% !important;
+}
