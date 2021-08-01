@@ -10,7 +10,11 @@
   background-color: #121212 !important;
 }
 
-.nav-link-theme {
+.bg-nav {
+  background-color: #B22222 !important;
+}
+.nav
+-link-theme {
   color: #4ea09a;
   transition: 600ms;
   text-decoration: none;
@@ -31,4 +35,8 @@
 
 .nav-link-theme.active {
   color: #63ccc5;
+}
+
+.tinggi-card {
+  height: 230px;
 }
